@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -22,7 +21,7 @@ type Response struct {
 
 type WordReference struct {
 	Reference string `json:"reference"`
-	Content   string `json:"content"`
+	Verse     string `json:"content"`
 }
 
 func GetWordJSON(word string, pageNum ...int) Response {
@@ -32,7 +31,6 @@ func GetWordJSON(word string, pageNum ...int) Response {
 	}
 
 	apiKey := os.Getenv("ESV_KEY")
-	fmt.Println(apiKey)
 
 	page := 1 // Default value
 	if len(pageNum) > 0 && pageNum[0] > 0 {

@@ -10,9 +10,19 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.GET("/ping", func(c *gin.Context) {
+	r.Static("/static", "./static")  // Serves static files
+	r.LoadHTMLGlob("templates/**/*") // Serves templates
+
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "pages/home", gin.H{
+			"data": api.GetWordJSON("abide"),
+		})
+	})
+
+	r.GET("/:word", func(c *gin.Context) {
+		word := c.Param("word")
 		c.JSON(http.StatusOK, gin.H{
-			"message": api.GetWordJSON("God", 3),
+			"data": api.GetWordJSON(word),
 		})
 	})
 	r.Run(":8081")
