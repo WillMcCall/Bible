@@ -1,6 +1,8 @@
 :root {
     --light: #eee;
     --dark: #222;
+    --blue: #4A90E2;
+    --blue-hover: #5ea6f8;
 }
 
 body {
@@ -22,13 +24,13 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #4A90E2;
+    color: var(--blue);
     transition: 0.2s;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #5ea6f8;
+    color: var(--blue-hover);
 }
 
 ul {
@@ -45,7 +47,7 @@ input {
     padding-left: 1em;
     border-radius: 0.4em;
     background-color: #333;
-    border-color: #222;
+    border-color: var(--dark);
     outline: none;
     box-shadow: none;
     color: var(--light);
@@ -53,6 +55,39 @@ input {
 
 input::placeholder {
     color: #999;
+}
+
+button {
+    background-color: var(--blue);
+    color: var(--light);
+    font-size: 1.5em;
+    border-radius: 0.4em;
+    outline: none;
+    box-shadow: none;
+    border-color: var(--dark);
+    padding: 20em, 1em;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--blue-hover);
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#submit-btn {
+    width: 50px;
+}
+
+#pagination {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
 }
 
 @media only screen and (min-width: 768px) {
