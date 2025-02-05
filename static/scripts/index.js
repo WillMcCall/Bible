@@ -40,7 +40,11 @@ function renderData(data, currentPage) {
 
     for (verse of data.results) {
         let li = document.createElement("li");
-        li.innerHTML = `${verse.reference}: ${verse.content}`;
+        let highlightedVerse = verse.content.replace(
+            new RegExp(`(${data.word})`, "gi"), 
+            `<i style="color: #4A90E2;">$1</i>`
+        );
+        li.innerHTML = `<b>${verse.reference}:</b> ${highlightedVerse}`;
 
         ul.appendChild(li);
     }
