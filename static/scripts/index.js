@@ -26,7 +26,13 @@ async function getData() {
         totalPages = data.total_pages;
         word = data.word;
 
-        renderData(data, currentPage);
+        if (data.total_results > 0) {
+            renderData(data, currentPage);
+        } else {
+            // I don't know man
+            // I didn't know what to call this
+            renderNothing(word);
+        }
         
     } catch (error) {
         console.error("Error fetching data:", error);
@@ -63,6 +69,12 @@ function renderData(data, currentPage) {
     }
 
     document.getElementById("page-info").innerHTML = `<div>Page ${currentPage}/${totalPages}</div>`;
+}
+
+function renderNothing(word) {
+    const content = document.getElementById("content");
+
+    content.innerHTML = `<b style="color:rgb(221, 83, 83); font-size: 1.3em;">${word} does not appear in the ESV Bible!</b>`
 }
 
 function prevPage() {

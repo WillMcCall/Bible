@@ -100,6 +100,11 @@ button:disabled {
     gap: 0.5em;
 }
 
+#content {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 @media only screen and (min-width: 768px) {
     body {
         font-size: 15px;
